@@ -126,7 +126,7 @@ class DefaultAlipayClient(object):
             else:
                 sign = sign_with_rsa(self.__config.app_private_key, sign_content, self.__config.charset)
         except Exception as e:
-            raise RequestException('[' + THREAD_LOCAL.uuid + ']request sign failed. ' + str(e))
+            raise RequestException('[' + THREAD_LOCAL.uuid + ']request sign failed. ' + str(e)) from e
         common_params[P_SIGN] = sign
         self.__remove_common_params(params)
 

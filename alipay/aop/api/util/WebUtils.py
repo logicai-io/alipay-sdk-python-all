@@ -147,7 +147,7 @@ def do_post(url, query_string=None, headers=None, params=None, charset='utf-8', 
     response = connection.getresponse()
     if response.status is not 200:
         raise ResponseException('[' + THREAD_LOCAL.uuid + ']invalid http status ' + str(response.status) + \
-                               ',detail body:' + response.read())
+                               ',detail body:' + repr(response.read()))
     result = response.read()
     try:
         response.close()
